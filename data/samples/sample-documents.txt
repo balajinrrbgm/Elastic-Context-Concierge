@@ -1,0 +1,46 @@
+# Product Release Notes v2.5.0
+
+## New Features
+- Advanced AI-powered search with semantic matching
+- Real-time collaboration features
+- End-to-end encryption for data security
+
+## Breaking Changes
+- API v1 endpoints deprecated (migrate to v2)
+- Configuration file format changed
+- Minimum Node.js version now 18+
+
+## Bug Fixes
+- Fixed memory leak in document processing
+- Resolved authentication timeout issues
+
+---
+
+# Remote Work Policy
+
+## Eligibility
+All full-time employees eligible with manager approval.
+
+## Requirements
+- Stable internet (50 Mbps minimum)
+- Dedicated workspace
+- VPN for all work activities
+- Two-factor authentication mandatory
+
+## Equipment
+Company provides: laptop, monitor, keyboard, mouse, $500 stipend.
+
+---
+
+# Hybrid Work Policy
+
+## Structure
+3 days office, 2 days remote per week.
+
+## Office Days
+Tuesday and Thursday mandatory, plus one team-chosen day.
+
+## Benefits
+- Office amenities access
+- In-person collaboration
+- Flexible core hours schedule

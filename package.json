@@ -1,0 +1,25 @@
+{
+  "name": "elastic-context-concierge",
+  "version": "1.0.0",
+  "description": "AI-Powered Conversational Agent with Elasticsearch Hybrid Search and Google Cloud Vertex AI",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/elastic-context-concierge"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace=web",
+    "build": "npm run build --workspaces",
+    "test": "npm test --workspaces",
+    "deploy:infra": "cd infra && terraform apply -auto-approve",
+    "deploy:services": "./scripts/deploy-services.sh",
+    "deploy:web": "./scripts/deploy-web.sh",
+    "deploy": "npm run deploy:infra && npm run deploy:services && npm run deploy:web",
+    "ingest": "node ingestion/ingest.js"
+  },
+  "workspaces": [
+    "services/gateway",
+    "web",
+    "ingestion"
+  ]
+}
