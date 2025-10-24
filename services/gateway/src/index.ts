@@ -193,7 +193,7 @@ app.post('/agent/chat', async (req, res) => {
 });
 
 // Simple intent detection
-async function detectIntent(message: string): string {
+async function detectIntent(message: string): Promise<string> {
   const lowerMessage = message.toLowerCase();
   
   if (lowerMessage.includes('compare') || lowerMessage.includes('difference')) {

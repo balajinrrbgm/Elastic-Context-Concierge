@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elastic Context Concierge - YouTube Thumbnail</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: linear-gradient(135deg, #052b33 0%, #1e40af 50%, #06b6d4 100%);
+            color: white;
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .background-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(6, 182, 212, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 64, 175, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(5, 43, 51, 0.5) 0%, transparent 50%);
+        }
+        
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+            padding: 60px;
+        }
+        
+        .title {
+            font-size: 4.5em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #ffffff, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #fbbf24;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.15);
+            padding: 20px 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(6, 182, 212, 0.5);
+            font-size: 1.3em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        .demo-badge {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .tech-icons {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .stats {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            text-align: right;
+        }
+        
+        .stat {
+            font-size: 1.1em;
+            margin: 5px 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        .ai-visual {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, rgba(6, 182, 212, 0.3), rgba(30, 64, 175, 0.3));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="container">
+        <h1 class="title">ELASTIC CONTEXT<br/>CONCIERGE</h1>
+        <p class="subtitle">AI + Hybrid Search Revolution</p>
+        
+        <div class="features">
+            <div class="feature">🔍 Hybrid Search</div>
+            <div class="feature">🤖 Multi-Agent AI</div>
+            <div class="feature">⚡ Real-time</div>
+        </div>
+    </div>
+    
+    <div class="demo-badge">LIVE DEMO</div>
+    
+    <div class="ai-visual">🧠</div>
+    
+    <div class="tech-icons">
+        <div class="tech-icon">ES</div>
+        <div class="tech-icon">AI</div>
+        <div class="tech-icon">GCP</div>
+        <div class="tech-icon">TS</div>
+    </div>
+    
+    <div class="stats">
+        <div class="stat">⚡ &lt;2s Response</div>
+        <div class="stat">🎯 85%+ Accuracy</div>
+        <div class="stat">💰 $35/month</div>
+        <div class="stat">🚀 Auto-scaling</div>
+    </div>
+</body>
+</html>
