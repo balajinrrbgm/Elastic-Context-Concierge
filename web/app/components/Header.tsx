@@ -17,9 +17,6 @@ export default function Header() {
       </div>
       <div className="nav container">
         <nav>
-          <a href="#demo">Try demo</a>
-          <a href="#how">How it works</a>
-          <a href="https://ai-accelerate.devpost.com/" target="_blank" rel="noopener noreferrer">Devpost</a>
         </nav>
         <a className="btn" href="#demo">Try it</a>
       </div>
