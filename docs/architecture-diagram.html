@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elastic Context Concierge - Architecture Diagram</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #052b33 0%, #06b6d4 100%);
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .title {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .architecture {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .layer {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .layer h3 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #06b6d4;
+        }
+        
+        .component {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        
+        .flow-arrow {
+            font-size: 2em;
+            color: #06b6d4;
+            margin: 20px 0;
+        }
+        
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .tech-item {
+            background: rgba(255,255,255,0.15);
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .metrics {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #06b6d4;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Elastic Context Concierge</h1>
+        <p class="subtitle">AI-Powered Hybrid Search & Multi-Agent Document Assistant</p>
+        
+        <div class="architecture">
+            <div class="layer">
+                <h3>Frontend Layer</h3>
+                <div class="component">Next.js 14</div>
+                <div class="component">React 18</div>
+                <div class="component">TypeScript</div>
+                <div class="component">Tailwind CSS</div>
+            </div>
+            
+            <div class="layer">
+                <h3>API Gateway</h3>
+                <div class="component">Express.js</div>
+                <div class="component">Multi-Agent Router</div>
+                <div class="component">Authentication</div>
+                <div class="component">Rate Limiting</div>
+            </div>
+            
+            <div class="layer">
+                <h3>Search Engine</h3>
+                <div class="component">Elasticsearch 8.15</div>
+                <div class="component">Hybrid Search</div>
+                <div class="component">Vector Store</div>
+                <div class="component">Reranking</div>
+            </div>
+            
+            <div class="layer">
+                <h3>AI Platform</h3>
+                <div class="component">Vertex AI</div>
+                <div class="component">Chat Completions</div>
+                <div class="component">Embeddings</div>
+                <div class="component">Streaming</div>
+            </div>
+        </div>
+        
+        <div class="flow-arrow">↓</div>
+        
+        <div class="tech-stack">
+            <div class="tech-item">Google Cloud Run</div>
+            <div class="tech-item">Cloud Build</div>
+            <div class="tech-item">Secret Manager</div>
+            <div class="tech-item">Artifact Registry</div>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value">&lt;2s</div>
+                <div class="metric-label">Response Time</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">85%+</div>
+                <div class="metric-label">Accuracy</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">$35/mo</div>
+                <div class="metric-label">Operating Cost</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">0→∞</div>
+                <div class="metric-label">Auto Scaling</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
