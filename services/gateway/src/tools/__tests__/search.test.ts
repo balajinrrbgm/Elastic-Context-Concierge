@@ -67,7 +67,7 @@ describe('Search Tool', () => {
 
       expect(result.results).toHaveLength(1);
       expect(result.results[0].title).toBe('Test Document');
-      expect(result.usedHybrid).toBe(true);
+      expect(result.searchType).toBe('hybrid');
     });
 
     it('should apply filters correctly', async () => {

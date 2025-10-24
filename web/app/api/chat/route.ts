@@ -29,16 +29,25 @@ export async function POST(req: NextRequest) {
     
     const searchResults = await searchRes.json();
 
-    const chunks = searchResults.results.map((r: any) => ({
+    // Convert search results to the format expected by summarize tool
+    const documents = searchResults.results.map((r: any) => ({
+      id: r.id,
+      title: r.title,
       content: r.content,
-      source: r.title,
-      id: r.id
+      summary: r.summary || r.content.substring(0, 300) + '...',
+      category: r.category || 'general',
+      department: r.department || 'unknown',
+      author: r.author || 'Unknown',
+      source_url: r.source_url || '#',
+      date: r.date || new Date().toISOString(),
+      score: r.score,
+      confidence_score: r.confidence_score
     }));
 
     const summaryRes = await fetch(`${GATEWAY_URL}/tool/summarize`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chunks, style: 'comprehensive' })
+      body: JSON.stringify({ query: message, documents, options: { style: 'comprehensive' } })
     });
     
     if (!summaryRes.ok) {
