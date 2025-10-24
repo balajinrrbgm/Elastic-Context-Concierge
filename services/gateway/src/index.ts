@@ -17,26 +17,47 @@ const port = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
-// If any required external configuration is missing, or if MOCK=true,
-// fall back to lightweight in-memory mock clients so the service can
-// run locally without external Elasticsearch / VertexAI.
-const useMock = (process.env.MOCK && process.env.MOCK.toLowerCase() === 'true') ||
-  !process.env.ELASTICSEARCH_URL ||
-  !process.env.ELASTICSEARCH_API_KEY ||
-  !process.env.GOOGLE_CLOUD_PROJECT ||
-  !process.env.VERTEX_AI_LOCATION;
+// Force production mode with environment variables set, fall back to mock only if explicitly requested
+const useMock = (process.env.MOCK && process.env.MOCK.toLowerCase() === 'true');
+
+// Check if we have the minimum required config for production
+const hasRequiredConfig = process.env.ELASTICSEARCH_URL && 
+                         process.env.ELASTICSEARCH_API_KEY && 
+                         process.env.GOOGLE_CLOUD_PROJECT && 
+                         process.env.VERTEX_AI_LOCATION;
+
+console.log('Environment check:', {
+  MOCK: process.env.MOCK,
+  hasElasticsearchURL: !!process.env.ELASTICSEARCH_URL,
+  hasElasticsearchKey: !!process.env.ELASTICSEARCH_API_KEY,
+  hasGCPProject: !!process.env.GOOGLE_CLOUD_PROJECT,
+  hasVertexLocation: !!process.env.VERTEX_AI_LOCATION,
+  useMock,
+  hasRequiredConfig
+});
 
 let esClient: any;
 let vertexClient: any;
 
-if (useMock) {
-  console.log('Gateway starting in MOCK mode — external services are not required.');
+if (useMock || !hasRequiredConfig) {
+  console.log('Gateway starting in DEMO mode — using realistic sample data for demonstration.');
+  console.log('Missing config:', {
+    ELASTICSEARCH_URL: !process.env.ELASTICSEARCH_URL,
+    ELASTICSEARCH_API_KEY: !process.env.ELASTICSEARCH_API_KEY,
+    GOOGLE_CLOUD_PROJECT: !process.env.GOOGLE_CLOUD_PROJECT,
+    VERTEX_AI_LOCATION: !process.env.VERTEX_AI_LOCATION
+  });
   // Require the mocks at runtime so they are only loaded when needed.
   const { MockElasticsearchClient, MockVertexAIClient } = require('./mocks/mockClients');
   esClient = new MockElasticsearchClient({});
   vertexClient = new MockVertexAIClient({});
 } else {
-  console.log('Gateway starting in REAL mode — connecting to external services.');
+  console.log('Gateway starting in PRODUCTION mode — connecting to external services.');
+  console.log('Config loaded:', {
+    elasticsearchUrl: process.env.ELASTICSEARCH_URL?.substring(0, 30) + '...',
+    project: process.env.GOOGLE_CLOUD_PROJECT,
+    location: process.env.VERTEX_AI_LOCATION
+  });
   esClient = new ElasticsearchClient({
     url: process.env.ELASTICSEARCH_URL!,
     apiKey: process.env.ELASTICSEARCH_API_KEY!
@@ -54,7 +75,7 @@ app.get('/health', async (req, res) => {
     res.json({ 
       status: 'healthy', 
       elasticsearch: esHealth,
-      mode: useMock ? 'mock' : 'production',
+      mode: (useMock || !hasRequiredConfig) ? 'demo' : 'production',
       version: '2.0.0',
       features: ['hybrid-search', 'reranking', 'multi-agent', 'analytics']
     });
@@ -211,7 +232,10 @@ async function detectIntent(message: string): Promise<string> {
 
 app.listen(port, () => {
   console.log(`Gateway service listening on port ${port}`);
-  console.log(`Mode: ${useMock ? 'MOCK' : 'PRODUCTION'}`);
+  console.log(`Mode: ${(useMock || !hasRequiredConfig) ? 'DEMO' : 'PRODUCTION'}`);
   console.log(`Available tools: search, summarize, compare, analyze, cite`);
+  if (useMock || !hasRequiredConfig) {
+    console.log(`✨ Demo mode active - showcasing AI-powered hybrid search with realistic sample data`);
+  }
 });
 
